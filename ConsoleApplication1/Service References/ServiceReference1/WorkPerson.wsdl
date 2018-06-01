@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WorkPerson" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8000/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8000/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8000/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DAL" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPerson_GetTaxies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaxies" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_GetTaxies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaxiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_MyOrders_InputMessage">
+    <wsdl:part name="parameters" element="tns:MyOrders" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_MyOrders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MyOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_AllCars_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllCars" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_AllCars_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_MakeOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeOrder" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_MakeOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MakeOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_ChangeStateOfOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeStateOfOrder" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_ChangeStateOfOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeStateOfOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_CreateNewPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPerson" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_CreateNewPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_Authoriz_InputMessage">
+    <wsdl:part name="parameters" element="tns:Authoriz" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_Authoriz_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthorizResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_WriteEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:WriteEmail" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_WriteEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WriteEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_ForgetPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ForgetPassword" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_ForgetPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ForgetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_SingOut_InputMessage">
+    <wsdl:part name="parameters" element="tns:SingOut" />
+  </wsdl:message>
+  <wsdl:message name="IPerson_SingOut_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SingOutResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPerson">
+    <wsdl:operation name="GetTaxies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerson/GetTaxies" message="tns:IPerson_GetTaxies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerson/GetTaxiesResponse" message="tns:IPerson_GetTaxies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MyOrders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerson/MyOrders" message="tns:IPerson_MyOrders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerson/MyOrdersResponse" message="tns:IPerson_MyOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AllCars">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerson/AllCars" message="tns:IPerson_AllCars_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerson/AllCarsResponse" message="tns:IPerson_AllCars_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerson/MakeOrder" message="tns:IPerson_MakeOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerson/MakeOrderResponse" message="tns:IPerson_MakeOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStateOfOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerson/ChangeStateOfOrder" message="tns:IPerson_ChangeStateOfOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerson/ChangeStateOfOrderResponse" message="tns:IPerson_ChangeStateOfOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerson/CreateNewPerson" message="tns:IPerson_CreateNewPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerson/CreateNewPersonResponse" message="tns:IPerson_CreateNewPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Authoriz">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerson/Authoriz" message="tns:IPerson_Authoriz_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerson/AuthorizResponse" message="tns:IPerson_Authoriz_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WriteEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerson/WriteEmail" message="tns:IPerson_WriteEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerson/WriteEmailResponse" message="tns:IPerson_WriteEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ForgetPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerson/ForgetPassword" message="tns:IPerson_ForgetPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerson/ForgetPasswordResponse" message="tns:IPerson_ForgetPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SingOut">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPerson/SingOut" message="tns:IPerson_SingOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPerson/SingOutResponse" message="tns:IPerson_SingOut_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPerson" type="tns:IPerson">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTaxies">
+      <soap:operation soapAction="http://tempuri.org/IPerson/GetTaxies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MyOrders">
+      <soap:operation soapAction="http://tempuri.org/IPerson/MyOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllCars">
+      <soap:operation soapAction="http://tempuri.org/IPerson/AllCars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeOrder">
+      <soap:operation soapAction="http://tempuri.org/IPerson/MakeOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStateOfOrder">
+      <soap:operation soapAction="http://tempuri.org/IPerson/ChangeStateOfOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPerson">
+      <soap:operation soapAction="http://tempuri.org/IPerson/CreateNewPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authoriz">
+      <soap:operation soapAction="http://tempuri.org/IPerson/Authoriz" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WriteEmail">
+      <soap:operation soapAction="http://tempuri.org/IPerson/WriteEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForgetPassword">
+      <soap:operation soapAction="http://tempuri.org/IPerson/ForgetPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SingOut">
+      <soap:operation soapAction="http://tempuri.org/IPerson/SingOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WorkPerson">
+    <wsdl:port name="BasicHttpBinding_IPerson" binding="tns:BasicHttpBinding_IPerson">
+      <soap:address location="http://localhost:8000/Client" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

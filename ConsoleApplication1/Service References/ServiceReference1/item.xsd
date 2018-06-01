@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DAL" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DAL" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfTaxi">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Taxi" nillable="true" type="tns:Taxi" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTaxi" nillable="true" type="tns:ArrayOfTaxi" />
+  <xs:complexType name="Taxi">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Car" nillable="true" type="tns:Car" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Orders" nillable="true" type="tns:ArrayOfOrder" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceKM" type="xs:double" />
+      <xs:element minOccurs="0" name="SecondName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Taxi" nillable="true" type="tns:Taxi" />
+  <xs:complexType name="Car">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClassOfCar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ForPassagers" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Marka" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxNumberOfPassager" type="xs:int" />
+      <xs:element minOccurs="0" name="Taxies" nillable="true" type="tns:ArrayOfTaxi" />
+      <xs:element minOccurs="0" name="VantashopidyomKG" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Car" nillable="true" type="tns:Car" />
+  <xs:complexType name="ArrayOfOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrder" nillable="true" type="tns:ArrayOfOrder" />
+  <xs:complexType name="Order">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Person" nillable="true" type="tns:Person" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="StateOfOrder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Taxi" nillable="true" type="tns:Taxi" />
+      <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Order" nillable="true" type="tns:Order" />
+  <xs:complexType name="Person">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Orders" nillable="true" type="tns:ArrayOfOrder" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecondName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Person" nillable="true" type="tns:Person" />
+  <xs:complexType name="ArrayOfCar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Car" nillable="true" type="tns:Car" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCar" nillable="true" type="tns:ArrayOfCar" />
+</xs:schema>
