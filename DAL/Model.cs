@@ -91,7 +91,7 @@ namespace DAL
 		{
 			using (StreamWriter s = new StreamWriter(@"Exeptions.txt", true))
 			{
-				s.WriteLine(m);
+				s.WriteLine(DateTime.Now + ": " +  m);
 			}
 		}
 	}

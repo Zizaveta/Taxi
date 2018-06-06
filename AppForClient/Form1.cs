@@ -26,26 +26,38 @@ namespace AppForClient
 
         private void Enter_Click(object sender, EventArgs e)
         {
-            if (PersonWork.Authoriz(mail.Text, pass.Text) == true)
+            try
             {
-                MainClientWindow w = new MainClientWindow();
-                w.ShowDialog();
+                if (PersonWork.Authoriz(mail.Text, pass.Text) == true)
+                {
+                    MainClientWindow w = new MainClientWindow();
+                    w.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Wrong email or password");
             }
-            else
-                MessageBox.Show("Wrong email or password");
+            catch { }
         }
 
         private void Registr_Click(object sender, EventArgs e)
         {
-            Regist w = new Regist();
-            w.ShowDialog();
+            try
+            {
+                Regist w = new Regist();
+                w.ShowDialog();
+            }
+            catch { }
         }
 
         private void ForgetPass_Click(object sender, EventArgs e)
         {
-            if (mail.Text.Length == 0)
-                MessageBox.Show("Input email");
-            MessageBox.Show(PersonWork.ForgetPassword(mail.Text));
+            try
+            {
+                if (mail.Text.Length == 0)
+                    MessageBox.Show("Input email");
+                MessageBox.Show(PersonWork.ForgetPassword(mail.Text));
+            }
+            catch { }
         }
     }
 }

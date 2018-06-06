@@ -54,52 +54,61 @@ namespace AppForTaxi
         }
         public void ShowOrder()
         {
-
-            map.Overlays.Clear();
-
-            comboBox1.Items.Clear();
-            textBox5.Text = ListOfOrder[i].Coment;
-            if(ListOfOrder[i].StateOfOrder == "Closed" || ListOfOrder[i].StateOfOrder == "Cansel")
+            try
             {
-                comboBox1.Enabled = false;          
-            }
-            else
-            {
-                comboBox1.Enabled = true;
-                if (ListOfOrder[i].StateOfOrder == "Wait")
+
+                comboBox1.Items.Clear();
+                textBox5.Text = ListOfOrder[i].Coment;
+                if (ListOfOrder[i].StateOfOrder == "Closed" || ListOfOrder[i].StateOfOrder == "Cansel")
                 {
-                    comboBox1.Items.Add("Wait");
-                    comboBox1.Items.Add("In work");
+                    comboBox1.Enabled = false;
                 }
-                if (ListOfOrder[i].StateOfOrder == "In work")
-                    comboBox1.Items.Add("In work");
+                else
+                {
+                    comboBox1.Enabled = true;
+                    if (ListOfOrder[i].StateOfOrder == "Wait")
+                    {
+                        comboBox1.Items.Add("Wait");
+                        comboBox1.Items.Add("In work");
+                    }
+                    if (ListOfOrder[i].StateOfOrder == "In work")
+                        comboBox1.Items.Add("In work");
+
+                }
+                comboBox1.Items.Add("Closed");
+                comboBox1.Items.Add("Cansel");
+                comboBox1.SelectedItem = ListOfOrder[i].StateOfOrder;
+
+                textBox1.Text = ListOfOrder[i].LatFrom.ToString();
+                textBox2.Text = ListOfOrder[i].LongtFrom.ToString();
+
+                textBox3.Text = ListOfOrder[i].LatTo.ToString();
+                textBox4.Text = ListOfOrder[i].LongtTo.ToString();
+
+                map = new GMapControl();
+                map.Overlays.Clear();
+                //map.SetPositionByKeywords("Ukraine");
+                map.Position = new PointLatLng(ListOfOrder[i].LongtFrom, ListOfOrder[i].LatFrom);
+
+                PointLatLng point = new PointLatLng(ListOfOrder[i].LongtFrom,ListOfOrder[i].LatFrom);
+                GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
+                PointLatLng point2 = new PointLatLng(ListOfOrder[i].LongtTo, ListOfOrder[i].LatTo);
+                GMapMarker marker2 = new GMarkerGoogle(point2, GMarkerGoogleType.red_pushpin);
+
+                GMapOverlay markers = new GMapOverlay("markers");
+                markers.Markers.Add(marker);
+                markers.Markers.Add(marker2);
+
+                map.Overlays.Add(markers);
+
+                var route = GoogleMapProvider.Instance.GetRoute(point, point2, false, false, 50);
+                var r = new GMapRoute(route.Points, "My route");
+                var routes = new GMapOverlay("routes");
+                routes.Routes.Add(r);
+                map.Overlays.Add(routes);
 
             }
-            comboBox1.Items.Add("Closed");
-            comboBox1.Items.Add("Cansel");
-            comboBox1.SelectedItem = ListOfOrder[i].StateOfOrder;
-
-            map.Position = new PointLatLng(ListOfOrder[i].LatFrom, ListOfOrder[i].LongtFrom);
-            PointLatLng point = new PointLatLng(ListOfOrder[i].LatFrom, ListOfOrder[i].LongtFrom);
-            GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
-
-            //map.Position = new PointLatLng(ListOfOrder[i].LatTo, ListOfOrder[i].LongtTo);
-            PointLatLng point2 = new PointLatLng(ListOfOrder[i].LatTo, ListOfOrder[i].LongtTo);
-            GMapMarker marker2 = new GMarkerGoogle(point2, GMarkerGoogleType.red_pushpin);
-
-            GMapOverlay markers = new GMapOverlay("markers");
-            markers.Markers.Add(marker);
-            markers.Markers.Add(marker2);
-
-            map.Overlays.Add(markers);
-
-            var route = GoogleMapProvider.Instance.GetRoute(point, point2, false, false, 50);
-            var r = new GMapRoute(route.Points, "My route");
-            var routes = new GMapOverlay("routes");
-            routes.Routes.Add(r);
-            map.Overlays.Add(routes);
-
-
+            catch { }
 
         }
         private void Check_Change(object sender, EventArgs e)

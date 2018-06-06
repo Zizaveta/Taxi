@@ -19,45 +19,69 @@ namespace AppForClient
         public AboutTaxi()
         {
             InitializeComponent();
-            Taxies = Form1.PersonWork.GetTaxies();
-            Show(Taxies[i]);
+            try
+            {
+                Taxies = Form1.PersonWork.GetTaxies();
+                Show(Taxies[i]);
+            }
+            catch { }
         }
         public AboutTaxi(Taxi t):this()
         {
-            button2.Visible = false;
-            button3.Visible = false;
-            Show(t);
+            try
+            {
+                button2.Visible = false;
+                button3.Visible = false;
+                Show(t);
+            }
+            catch { }
         }
         public void Show(Taxi taxi)
         {
-            textBox1.Text = taxi.DriverName;
-            pictureBox1.Image = null;
             try
             {
-                MemoryStream ms = new MemoryStream(taxi.Image, 0, taxi.Image.Length);
-                ms.Write(taxi.Image, 0, taxi.Image.Length);
-                pictureBox1.Image = Image.FromStream(ms, true);//Exception occurs here
+                textBox1.Text = taxi.DriverName;
+                pictureBox1.Image = null;
+                try
+                {
+                    MemoryStream ms = new MemoryStream(taxi.Image, 0, taxi.Image.Length);
+                    ms.Write(taxi.Image, 0, taxi.Image.Length);
+                    pictureBox1.Image = Image.FromStream(ms, true);//Exception occurs here
+                }
+                catch { pictureBox1.Image = null; }
             }
-            catch { pictureBox1.Image = null; }
+            catch { }
         }
         private void About_Click(object sender, EventArgs e)
         {
-            About_car w = new About_car(i);
-            w.ShowDialog();
+            try
+            {
+                About_car w = new About_car(i);
+                w.ShowDialog();
+            }
+            catch { }
         }
 
         private void Prev_Click(object sender, EventArgs e)
         {
-            if (i - 1 >= 0)
-                i--;
-            Show(Taxies[i]);
+            try
+            {
+                if (i - 1 >= 0)
+                    i--;
+                Show(Taxies[i]);
+            }
+            catch { }
         }
 
         private void Next_Click(object sender, EventArgs e)
         {
-            if (i + 1 < Taxies.Count)
-                i++;
-            Show(Taxies[i]);
+            try
+            {
+                if (i + 1 < Taxies.Count)
+                    i++;
+                Show(Taxies[i]);
+            }
+            catch { }
         }
 
      

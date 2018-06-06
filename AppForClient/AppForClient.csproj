@@ -96,6 +96,12 @@
     <Compile Include="AddNewOrder.Designer.cs">
       <DependentUpon>AddNewOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangeMyPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeMyPassword.Designer.cs">
+      <DependentUpon>ChangeMyPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     <EmbeddedResource Include="AddNewOrder.resx">
       <DependentUpon>AddNewOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangeMyPassword.resx">
+      <DependentUpon>ChangeMyPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +161,7 @@
     <EmbeddedResource Include="ShowOrders.resx">
       <DependentUpon>ShowOrders.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -199,6 +199,44 @@ namespace BLL
                 return null;
             }
         }
+        public bool ChangePassword(string password)
+        {
+            try
+            {
+                if (password.Length < 8)
+                    return false;
+                using (TaxiModel db = new TaxiModel())
+                {
+                    db.Persons.First(elem => elem.Id == person.Id).Password = password;
+                    db.SaveChanges();
+                    Authoriz(person.Email, password);
+                    return true;
+                }
+            }
+            catch(Exception ex)
+            {
+                Log.Logger(ex.Message);
+                return false;
+            }
+        }
+        public bool ChangeImage(byte[] img)
+        {
+            try
+            {
+                using (TaxiModel db = new TaxiModel())
+                {
+                    db.Persons.First(elem => elem.Id == person.Id).Image = img;
+                    db.SaveChanges();
+                    Authoriz(person.Email, person.Password);
+                    return true;
+                }
+            }
+            catch(Exception ex)
+            {
+                Log.Logger(ex.Message);
+                return false;
+            }
+        }
 
     }
 
@@ -281,11 +319,11 @@ namespace BLL
                 return false;
 			}
 		}
-		public bool WriteEmail(string email, string Thema, string Message)
+		public static bool WriteEmail(string email, string Thema, string Message)
 		{
 			try
 			{
-                MailMessage m = new MailMessage(new MailAddress(taxi.Email, taxi.DriverName), new MailAddress(email));
+                MailMessage m = new MailMessage(new MailAddress(email, "Taxi"), new MailAddress(email));
 				m.Subject = Thema;
 				m.Body = Message;
 				SmtpClient smtp = new SmtpClient("aspmx.l.google.com", 25);
@@ -337,6 +375,24 @@ namespace BLL
 				return "Something wrong. Message is not receive";
 			}
 		}
+        public bool ChangeCar(int idcar)
+        {
+            try
+            {
+                using (TaxiModel db = new TaxiModel())
+                {
+                    db.Taxies.First(elem => elem.Id == taxi.Id).Car = db.Cars.First(elem => elem.Id == idcar);
+                    db.SaveChanges();
+                    Authoriz(taxi.Email, taxi.Password);
+                    return true;
+                }
+            }
+            catch(Exception ex)
+            {
+                Log.Logger(ex.Message);
+                return false;
+            }
+        }
         public void SingOut()
         {
             try
@@ -398,6 +454,44 @@ namespace BLL
             {
                 Log.Logger(ex.Message);
                 return null;
+            }
+        }
+        public bool ChangePassword(string password)
+        {
+            try
+            {
+                if (password.Length < 8)
+                    return false;
+                using (TaxiModel db = new TaxiModel())
+                {
+                    db.Taxies.First(elem => elem.Id == taxi.Id).Password = password;
+                    db.SaveChanges();
+                    Authoriz(taxi.Email, password);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Logger(ex.Message);
+                return false;
+            }
+        }
+        public bool ChangeImage(byte[] img)
+        {
+            try
+            {
+                using (TaxiModel db = new TaxiModel())
+                {
+                    db.Taxies.First(elem => elem.Id == taxi.Id).Image = img;
+                    db.SaveChanges();
+                    Authoriz(taxi.Email, taxi.Password);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Logger(ex.Message);
+                return false;
             }
         }
     }

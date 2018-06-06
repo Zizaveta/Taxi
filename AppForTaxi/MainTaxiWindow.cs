@@ -41,56 +41,113 @@ namespace AppForTaxi
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-            Form1.WorkTaxi.Place(double.Parse(textBox3.Text),double.Parse(textBox2.Text));
+            try
+            {
+                Form1.WorkTaxi.Place(double.Parse(textBox3.Text), double.Parse(textBox2.Text));
 
-            map.Overlays.Clear();
+                map.Overlays.Clear();
 
-            map.Position = new GMap.NET.PointLatLng(double.Parse(textBox3.Text), double.Parse(textBox2.Text));
-            PointLatLng point = new PointLatLng(double.Parse(textBox3.Text), double.Parse(textBox2.Text));
-            GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
+                map.Position = new GMap.NET.PointLatLng(double.Parse(textBox3.Text), double.Parse(textBox2.Text));
+                PointLatLng point = new PointLatLng(double.Parse(textBox3.Text), double.Parse(textBox2.Text));
+                GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
 
-            markers = new GMapOverlay("markers");
-            
-            markers.Markers.Add(marker);
-            map.Overlays.Add(markers);
+                markers = new GMapOverlay("markers");
+
+                markers.Markers.Add(marker);
+                map.Overlays.Add(markers);
+            }
+            catch { }
         }
 
         private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MyOders w = new MyOders();
-            w.ShowDialog();
+            try
+            {
+                MyOders w = new MyOders();
+                w.ShowDialog();
+            }
+            catch { }
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1.WorkTaxi.SingOut();
-            this.Close();
-
+            try
+            {
+                Form1.WorkTaxi.SingOut();
+                this.Close();
+            }
+            catch { }
         }
 
         private void aboutMyCarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // MessageBox.Show(Form1.WorkTaxi.taxi.Car.Id.ToString());
-
-            MyCar w = new MyCar(1);
-            w.ShowDialog();
+            try
+            {
+                //MyCar w = new MyCar(Form1.WorkTaxi.AboutMe().Car.Id);
+                //w.ShowDialog();
+            }
+            catch { }
         }
 
         private void map_MouseClick(object sender, MouseEventArgs e)
         {
-            textBox3.Text = map.FromLocalToLatLng(e.X, e.Y).Lat.ToString();
-            textBox2.Text = map.FromLocalToLatLng(e.X, e.Y).Lng.ToString();
+            try
+            {
+                textBox3.Text = map.FromLocalToLatLng(e.X, e.Y).Lat.ToString();
+                textBox2.Text = map.FromLocalToLatLng(e.X, e.Y).Lng.ToString();
 
-            map.Overlays.Clear();
-            map.Position = new GMap.NET.PointLatLng(double.Parse(textBox3.Text), double.Parse(textBox2.Text));
-            PointLatLng point = new PointLatLng(double.Parse(textBox3.Text), double.Parse(textBox2.Text));
-            GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
+                map.Overlays.Clear();
+                map.Position = new GMap.NET.PointLatLng(double.Parse(textBox3.Text), double.Parse(textBox2.Text));
+                PointLatLng point = new PointLatLng(double.Parse(textBox3.Text), double.Parse(textBox2.Text));
+                GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
 
-            markers = new GMapOverlay("markers");
+                markers = new GMapOverlay("markers");
 
-            markers.Markers.Add(marker);
-            map.Overlays.Add(markers);
+                markers.Markers.Add(marker);
+                map.Overlays.Add(markers);
+            }
+            catch { }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog o = new OpenFileDialog();
+                if (o.ShowDialog() == DialogResult.OK)
+                {
+                    pictureBox1.Image = Image.FromFile(o.FileName);
+                    byte[] buff = new byte[255];
+                    if (pictureBox1.Image != null)
+                    {
+                        MemoryStream ms = new MemoryStream();
+                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        buff = ms.GetBuffer();
+                    }
+                    if (Form1.WorkTaxi.ChangeImage(buff) == false)
+                        MessageBox.Show("Image not save");
+                }
+            }
+            catch { }
+        }
+
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ChangeMyPassword c = new ChangeMyPassword();
+                c.ShowDialog();
+            }
+            catch { }
+        }
+
+
+        
+        private void changeCarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeMyCar changeMyCar = new ChangeMyCar();
+            changeMyCar.ShowDialog();
         }
     }
 }

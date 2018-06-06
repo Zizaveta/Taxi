@@ -22,33 +22,49 @@ namespace AppForTaxi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (WorkTaxi.Authoriz(textBox1.Text, textBox2.Text) == true)
+            try
             {
-                MainTaxiWindow w = new MainTaxiWindow();
-                w.ShowDialog();
+                if (WorkTaxi.Authoriz(textBox1.Text, textBox2.Text) == true)
+                {
+                    MainTaxiWindow w = new MainTaxiWindow();
+                    w.ShowDialog();
+                }
+                else MessageBox.Show("Wrong email or password");
             }
-            else MessageBox.Show("Wrong email or password");
+            catch { }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Registr w = new Registr();
-            w.ShowDialog();
+            try
+            {
+                Registr w = new Registr();
+                w.ShowDialog();
+            }
+            catch { }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length == 0)
-                MessageBox.Show("Input email");
-            else
+            try
             {
-                WorkTaxi.ForgetPassword(textBox1.Text);
+                if (textBox1.Text.Length == 0)
+                    MessageBox.Show("Input email");
+                else
+                {
+                    MessageBox.Show(WorkTaxi.ForgetPassword(textBox1.Text));
+                }
             }
+            catch { }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            WorkTaxi.SingOut();
+            try
+            {
+                WorkTaxi.SingOut();
+            }
+            catch { }
         }
     }
 }

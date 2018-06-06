@@ -39,7 +39,10 @@
             this.map = new GMap.NET.WindowsForms.GMapControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ordersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.carToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeCarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -68,8 +71,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.map);
             this.splitContainer1.Panel2.Controls.Add(this.menuStrip1);
-            this.splitContainer1.Size = new System.Drawing.Size(536, 398);
-            this.splitContainer1.SplitterDistance = 201;
+            this.splitContainer1.Size = new System.Drawing.Size(613, 398);
+            this.splitContainer1.SplitterDistance = 229;
             this.splitContainer1.TabIndex = 1;
             // 
             // button1
@@ -131,16 +134,18 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // map
             // 
             this.map.Bearing = 0F;
             this.map.CanDragMap = true;
+            this.map.Dock = System.Windows.Forms.DockStyle.Fill;
             this.map.EmptyTileColor = System.Drawing.Color.Navy;
             this.map.GrayScaleMode = false;
             this.map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.map.LevelsKeepInMemmory = 5;
-            this.map.Location = new System.Drawing.Point(3, 27);
+            this.map.Location = new System.Drawing.Point(0, 24);
             this.map.MarkersEnabled = true;
             this.map.MaxZoom = 2;
             this.map.MinZoom = 2;
@@ -154,20 +159,21 @@
             this.map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.map.ShowTileGridLines = false;
-            this.map.Size = new System.Drawing.Size(325, 368);
+            this.map.Size = new System.Drawing.Size(380, 374);
             this.map.TabIndex = 1;
             this.map.Zoom = 0D;
             this.map.MouseClick += new System.Windows.Forms.MouseEventHandler(this.map_MouseClick);
-           // this.map.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.map_MouseDoubleClick);
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ordersToolStripMenuItem,
+            this.changePasswordToolStripMenuItem,
+            this.carToolStripMenuItem,
             this.logOutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(331, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(380, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -178,6 +184,13 @@
             this.ordersToolStripMenuItem.Text = "Orders";
             this.ordersToolStripMenuItem.Click += new System.EventHandler(this.ordersToolStripMenuItem_Click);
             // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
+            this.changePasswordToolStripMenuItem.Text = "Change password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
+            // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
@@ -185,11 +198,26 @@
             this.logOutToolStripMenuItem.Text = "Log out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
+            // carToolStripMenuItem
+            // 
+            this.carToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeCarToolStripMenuItem});
+            this.carToolStripMenuItem.Name = "carToolStripMenuItem";
+            this.carToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.carToolStripMenuItem.Text = "Car";
+            // 
+            // changeCarToolStripMenuItem
+            // 
+            this.changeCarToolStripMenuItem.Name = "changeCarToolStripMenuItem";
+            this.changeCarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeCarToolStripMenuItem.Text = "Change car";
+            this.changeCarToolStripMenuItem.Click += new System.EventHandler(this.changeCarToolStripMenuItem_Click);
+            // 
             // MainTaxiWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 398);
+            this.ClientSize = new System.Drawing.Size(613, 398);
             this.Controls.Add(this.splitContainer1);
             this.Name = "MainTaxiWindow";
             this.Text = "MainTaxiWindow";
@@ -220,5 +248,8 @@
         private System.Windows.Forms.ToolStripMenuItem ordersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private GMap.NET.WindowsForms.GMapControl map;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem carToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeCarToolStripMenuItem;
     }
 }
